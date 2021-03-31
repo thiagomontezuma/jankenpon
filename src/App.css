@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+.App {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,6 +22,56 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-header {
+  font-size: 1.4em;
+  margin-bottom: 50px;
+}
+
+.App-main {
+  font-size: 1.5em;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.App-R {
+  background-color: #eaeaea;
+  border-radius: 150px;
+  padding: 1em 1.2em;
+}
+
+.App-P {
+  background-color: #eaeaea;
+  border-radius: 150px;
+  padding: 1em 1.2em;
+}
+
+.App-S {
+  background-color: #eaeaea;
+  border-radius: 150px;
+  padding: 1em 1.2em;
+}
+
+.App-Y {
+  background-color: #eaeaea;
+  border-radius: 150px;
+  padding: 1.0em 0.22em;
+  width: 50%;
+  font-size: 1.5em;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.App-C {
+  background-color: #eaeaea;
+  border-radius: 150px;
+  padding: 1.0em 0.22em;
+  width: 50%;
+  font-size: 1.5em;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .App-link {
