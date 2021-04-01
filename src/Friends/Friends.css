@@ -1,4 +1,4 @@
-.App {
+.Friends {
   min-height: 100vh;
   display: grid;
   grid-auto-rows: 25% 50% 25%;
@@ -15,31 +15,37 @@
   background-color: lightskyblue;
 }
 
-.App-header {
+.Friends-header {
   font-size: 1.4em;
   margin-bottom: 50px;
 }
 
-.App-main {
+.Friends-main {
   font-size: 2.5rem;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 0px;
   /* align-self: baseline; */
   width: 100%;
   justify-content: space-evenly;
 }
 
-.App-buttons {
-  background-color: #eaeaea;
-  border-radius: 150px;
-  padding: 0.4em 0.6em;
+.Friends-main-title {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
 }
 
-.App-result {
+.Friends-buttons {
+  background-color: #eaeaea;
+  border-radius: 150px;
+  padding: 0.3em 0.5em;
+  margin: 0 auto 20px auto;
+}
+
+.Friends-result {
   display: grid;
 }
 
-.App-result-icons {
+.Friends-result-icons {
   display: flex;
   font-size: 2.5rem;
   margin-bottom: 25px;
@@ -47,7 +53,7 @@
   justify-content: space-evenly;
 }
 
-.App-Y {
+.Friends-Y {
   padding: 15px;
   border-radius: 10px;
   background-color: #eaeaea;
@@ -59,7 +65,7 @@
   margin-bottom: 20px; */
 }
 
-.App-C {
+.Friends-C {
   padding: 15px;
   border-radius: 10px;
   background-color: #eaeaea;
@@ -71,11 +77,11 @@
   margin-bottom: 20px; */
 }
 
-.App-restart {
+.Friends-restart {
   margin-bottom: 18px;
 }
 
-.App-restart-button {
+.Friends-restart-button {
   width: 70%;
   border: 1px solid white;
   color: white;
@@ -88,7 +94,7 @@
   background-color: green;
 }
 
-.App-menu-button {
+.Friends-menu-button {
   width: 70%;
   border: 1px solid white;
   color: white;
@@ -101,21 +107,21 @@
   background-color: green;
 }
 
-.App-scores {
+.Friends-scores {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.App-score-container {
+.Friends-score-container {
   display: grid;
 }
 
-.App-score-name {
+.Friends-score-name {
   font-size: 0.8rem;
 }
 
-.App-score {
+.Friends-score {
   color: green;
   display: grid;
   padding: 4px 8px;
@@ -123,10 +129,10 @@
   border-radius: 5px;
 }
 
-.App-score-title {
+.Friends-score-title {
   font-size: 0.8rem;
 }
 
-.App-score-number {
+.Friends-score-number {
   font-size: 1.4rem;
 }

@@ -3,118 +3,147 @@ import parse from 'html-react-parser';
 import Header from '../Header/Header';
 import './Friends.css';
 
-class Choice extends Component {
+class Friends extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasPlayed: false,
-      playedEmoji: '&#x270A;',
-      randomComputerNumber: '&#x270C;',
-      didWin: 'lose',
-      userScore: 0,
-      aiScore: 0
+      hasAllPlayed: false,
+      userPlayedNumber: 0,
+      user1played: false,
+      user2played: false,
+      user1Score: 0,
+      user2Score: 0,
+      player1Emoji: '&#x270A;',
+      player2Emoji: '&#x270A;',
+      whoWin: ''
     };
   }
 
-  Logic(props) {
-    let randomNumber = Math.floor(Math.random() * 3) + 1;
-    this.setState({ hasPlayed: true });
-    if (props === 1) {
-      if (randomNumber === 3) {
-        this.handleLogicResponse(['YOU WIN', '&#x270A;', '&#x270C;']);
-        this.setState({ userScore: this.state.userScore + 1 });
-      } else if (randomNumber === 2) {
-        this.handleLogicResponse(['YOU LOSE', '&#x270A;', '&#x270B;']);
-        this.setState({ aiScore: this.state.aiScore + 1 });
-      } else if (randomNumber === 1) {
-        this.handleLogicResponse(["IT'S A TIE", '&#x270A;', '&#x270A;']);
-      }
+  emojiPressed(userNumber) {
+    if (!this.state.user1played) {
+      this.setState({ userPlayedNumber: userNumber });
+      this.setState({ user1played: true });
     }
-    if (props === 2) {
-      if (randomNumber === 1) {
-        this.handleLogicResponse(['YOU WIN', '&#x270B;', '&#x270A;']);
-        this.setState({ userScore: this.state.userScore + 1 });
-      } else if (randomNumber === 3) {
-        this.handleLogicResponse(['YOU LOSE', '&#x270B;', '&#x270C;']);
-        this.setState({ aiScore: this.state.aiScore + 1 });
-      } else if (randomNumber === 2) {
-        this.handleLogicResponse(["IT'S A TIE", '&#x270B;', '&#x270B;']);
-      }
-    }
-    if (props === 3) {
-      if (randomNumber === 2) {
-        this.handleLogicResponse(['YOU WIN', '&#x270C;', '&#x270B;']);
-        this.setState({ userScore: this.state.userScore + 1 });
-      } else if (randomNumber === 1) {
-        this.handleLogicResponse(['YOU LOSE', '&#x270C;', '&#x270A;']);
-        this.setState({ aiScore: this.state.aiScore + 1 });
-      } else if (randomNumber === 3) {
-        this.handleLogicResponse(["IT'S A TIE", '&#x270C;', '&#x270C;']);
+
+    if (this.state.user1played && !this.state.user2played) {
+      let user1PlayedNumber = this.state.userPlayedNumber;
+      if (user1PlayedNumber === 1) {
+        if (userNumber === 3) {
+          this.handleLogicResponse(['PLAYER 1 WINS', '&#x270A;', '&#x270C;']);
+          this.setState({ user1Score: this.state.user1Score + 1 });
+        } else if (userNumber === 2) {
+          this.handleLogicResponse(['PLAYER 2 WINS', '&#x270A;', '&#x270B;']);
+          this.setState({ user2Score: this.state.user2Score + 1 });
+        } else if (userNumber === 1) {
+          this.handleLogicResponse(["IT'S A TIE", '&#x270A;', '&#x270A;']);
+        }
+      } else if (user1PlayedNumber === 2) {
+        if (userNumber === 1) {
+          this.handleLogicResponse(['PLAYER 1 WINS', '&#x270B;', '&#x270A;']);
+          this.setState({ user1Score: this.state.user1Score + 1 });
+        } else if (userNumber === 3) {
+          this.handleLogicResponse(['PLAYER 2 WINS', '&#x270B;', '&#x270C;']);
+          this.setState({ user2Score: this.state.user2Score + 1 });
+        } else if (userNumber === 2) {
+          this.handleLogicResponse(["IT'S A TIE", '&#x270B;', '&#x270B;']);
+        }
+      } else if (user1PlayedNumber === 3) {
+        if (userNumber === 2) {
+          this.handleLogicResponse(['PLAYER 1 WINS', '&#x270C;', '&#x270B;']);
+          this.setState({ user1Score: this.state.user1Score + 1 });
+        } else if (userNumber === 1) {
+          this.handleLogicResponse(['PLAYER 2 WINS', '&#x270C;', '&#x270A;']);
+          this.setState({ user2Score: this.state.user2Score + 1 });
+        } else if (userNumber === 3) {
+          this.handleLogicResponse(["IT'S A TIE", '&#x270C;', '&#x270C;']);
+        }
       }
     }
   }
 
   handleLogicResponse(answerArray) {
     this.setState({
-      playedEmoji: answerArray[1],
-      randomComputerNumber: answerArray[2],
-      didWin: answerArray[0]
+      player1Emoji: answerArray[1],
+      player2Emoji: answerArray[2],
+      whoWin: answerArray[0],
+      hasAllPlayed: true
     });
   }
 
   render() {
     return (
-      <div className='App'>
+      <div className='Friends'>
         <Header />
-        <main className='App-main' style={{ display: this.state.hasPlayed ? 'none' : 'grid' }}>
-          <div className='App-buttons' onClick={() => this.Logic(1)}>
+        <main
+          className='Friends-main'
+          style={{ display: this.state.hasAllPlayed ? 'none' : 'grid' }}
+        >
+          {!this.state.user1played ? (
+            <p className='Friends-main-title'>Player 1 Turn</p>
+          ) : (
+            <p className='Friends-main-title'>Player 2 Turn</p>
+          )}
+          <div className='Friends-buttons' onClick={() => this.emojiPressed(1)}>
             <span>&#x270A;</span>
           </div>
-          <div className='App-buttons' onClick={() => this.Logic(2)}>
+          <div className='Friends-buttons' onClick={() => this.emojiPressed(2)}>
             <span>&#x270B;</span>
           </div>
-          <div className='App-buttons' onClick={() => this.Logic(3)}>
+          <div
+            className='Friends-buttons'
+            onClick={() => this.emojiPressed(3)}
+            style={{ marginBottom: '0px' }}
+          >
             <span>&#x270C;</span>
           </div>
         </main>
-        <div className='App-result' style={{ display: this.state.hasPlayed ? 'grid' : 'none' }}>
-          <h1 className='App-result-title' style={{ margin: '0 0 20px 0' }}>
-            {this.state.didWin}
+        <div
+          className='Friends-result'
+          style={{ display: this.state.hasAllPlayed ? 'grid' : 'none' }}
+        >
+          <h1 className='Friends-result-title' style={{ margin: '0 0 20px 0' }}>
+            {this.state.whoWin}
           </h1>
-          <div className='App-result-icons'>
-            <div className='App-Y'>{parse(`<span>${this.state.playedEmoji}</span>`)}</div>
-            <div className='App-C'>{parse(`<span>${this.state.randomComputerNumber}</span>`)}</div>
+          <div className='Friends-result-icons'>
+            <div className='Friends-Y'>{parse(`<span>${this.state.player1Emoji}</span>`)}</div>
+            <div className='Friends-C'>{parse(`<span>${this.state.player2Emoji}</span>`)}</div>
           </div>
-          <div className='App-restart'>
+          <div className='Friends-restart'>
             <button
-              className='App-restart-button'
+              className='Friends-restart-button'
               onClick={() => {
-                this.setState({ hasPlayed: false });
+                this.setState({
+                  hasAllPlayed: false,
+                  userPlayedNumber: 0,
+                  user1played: false,
+                  user2played: false,
+                  whoWin: ''
+                });
               }}
             >
               Play Again
             </button>
           </div>
-          <div className='App-menu'>
-            <button className='App-menu-button' onClick={() => this.props.backToMenu()}>
+          <div className='Friends-menu'>
+            <button className='Friends-menu-button' onClick={() => this.props.backToMenu()}>
               Main Menu
             </button>
           </div>
         </div>
-        <div className='App-scores'>
-          <div className='App-score-container'>
-            <span className='App-score-name'>YOU</span>
-            <div className='App-score'>
-              <span className='App-score-title'>SCORE</span>
-              <span className='App-score-number'>{this.state.userScore}</span>
+        <div className='Friends-scores'>
+          <div className='Friends-score-container'>
+            <span className='Friends-score-name'>PLAYER 1</span>
+            <div className='Friends-score'>
+              <span className='Friends-score-title'>SCORE</span>
+              <span className='Friends-score-number'>{this.state.user1Score}</span>
             </div>
           </div>
-          <div className='App-score-vs'>vs</div>
-          <div className='App-score-container'>
-            <span className='App-score-name'>AI</span>
-            <div className='App-score'>
-              <span className='App-score-title'>SCORE</span>
-              <span className='App-score-number'>{this.state.aiScore}</span>
+          <div className='Friends-score-vs'>vs</div>
+          <div className='Friends-score-container'>
+            <span className='Friends-score-name'>PLAYER 2</span>
+            <div className='Friends-score'>
+              <span className='Friends-score-title'>SCORE</span>
+              <span className='Friends-score-number'>{this.state.user2Score}</span>
             </div>
           </div>
         </div>
@@ -123,4 +152,4 @@ class Choice extends Component {
   }
 }
 
-export default Choice;
+export default Friends;

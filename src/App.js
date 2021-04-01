@@ -36,7 +36,11 @@ class App extends Component {
           </div>
         </article>
         <article>
-          <button className='play-button' style={{ marginBottom: '20px' }}>
+          <button
+            className='play-button'
+            onClick={() => this.playButton(1)}
+            style={{ marginBottom: '20px' }}
+          >
             Play with Friend
           </button>
           <button className='play-button' onClick={() => this.playButton(2)}>
