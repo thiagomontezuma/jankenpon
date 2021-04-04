@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import Header from '../Header/Header';
 import './Friends.css';
@@ -126,7 +127,9 @@ class Friends extends Component {
           </div>
           <div className='Friends-menu'>
             <button className='Friends-menu-button' onClick={() => this.props.backToMenu()}>
-              Main Menu
+              <Link to={'/'} style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                Main Menu
+              </Link>
             </button>
           </div>
         </div>
