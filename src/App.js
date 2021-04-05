@@ -52,7 +52,7 @@ class App extends Component {
                   style={{ marginBottom: '20px' }}
                 >
                   <Link
-                    to={'/play-with-friends'}
+                    to={'/play-with-friend'}
                     style={{ color: 'inherit', textDecoration: 'inherit' }}
                   >
                     Play with Friend
@@ -60,7 +60,7 @@ class App extends Component {
                 </button>
                 <button className='play-button' onClick={() => this.playButton(2)}>
                   <Link
-                    to={'/play-with-computer'}
+                    to={'/play-with-ai'}
                     style={{ color: 'inherit', textDecoration: 'inherit' }}
                   >
                     Play with AI
