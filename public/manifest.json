@@ -1,5 +1,5 @@
 {
-  "short_name": "JanKenPon",
+  "short_name": "Jankenpon",
   "name": "JanKenPon - Rock Paper Scissors",
   "icons": [
     {
@@ -10,7 +10,8 @@
     {
       "src": "jankenpon192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "jankenpon512.png",
@@ -21,5 +22,31 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#007ffe",
-  "background_color": "#bbf4ff"
+  "background_color": "#bbf4ff",
+  "shortcuts": [
+    {
+      "name": "Play with a Friend",
+      "short_name": "Play with Friend",
+      "url": "/play-with-friend",
+      "icons": [
+        {
+          "src": "jankenpon192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Play with the AI",
+      "short_name": "Play with AI",
+      "url": "/play-with-ai",
+      "icons": [
+        {
+          "src": "jankenpon192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
 }

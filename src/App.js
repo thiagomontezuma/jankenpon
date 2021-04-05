@@ -63,7 +63,7 @@ class App extends Component {
                     to={'/play-with-computer'}
                     style={{ color: 'inherit', textDecoration: 'inherit' }}
                   >
-                    Play with Computer
+                    Play with AI
                   </Link>
                 </button>
               </article>
